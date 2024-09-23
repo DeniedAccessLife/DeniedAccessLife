@@ -1,3 +1,8 @@
+<h1 align="center">Welcome 👋. I’m DeniedAccessLife ❤️</h1>
+
+- 📌 I’m currently learning **С#**, **C**, **C++**
+- 💻 I’m currently working on [ArduinoStrike](https://github.com/DeniedAccessLife/ArduinoStrike)
+
 ```powershell
 function Main
 {
@@ -33,3 +38,4 @@ function XORencrypt
 }
 
 Main
+```
