@@ -1,16 +1,34 @@
-## Hi there 👋
+```csharp
+using System;
 
-<!--
-**DeniedAccessLife/DeniedAccessLife** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+class DeniedAccessLife
+{
+    public static void Inject()
+    {
+        Console.WriteLine("Initiating driver injection into kernel...");
 
-Here are some ideas to get you started:
+        string encoded = Decrypt("AxoWYRkmdw4GLwlpOg1Pe0Q=");
+        Console.WriteLine($"Driver payload injected: {encoded}");
+    }
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    private static string Decrypt(string input)
+    {
+        string key = "WhoAmI";
+        string output = string.Empty;
+
+        for (int i = 0; i < input.Length; i++)
+        {
+            output += (char)(input[i] ^ key[i % key.Length]);
+        }
+
+        return output;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        DeniedAccessLife.Inject();
+    }
+}
