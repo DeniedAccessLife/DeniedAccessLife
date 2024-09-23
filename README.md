@@ -22,7 +22,7 @@ function Decrypt
     return " "
 }
 
-function XORencrypt
+function Encrypt
 {
     param ($text, $key)
 
