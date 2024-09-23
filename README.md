@@ -1,5 +1,6 @@
 ```powershell
-function Main {
+function Main
+{
     Write-Host "Decrypting GitHub and Telegram..."
 
     $github = "PxwbMR5zeEcIKBkhIgpBIgIkeCwKLwQsMykMIgg6JCQGJwg="
@@ -9,19 +10,22 @@ function Main {
     Write-Host "Telegram decrypted: $(Decrypt $telegram)"
 }
 
-function Decrypt {
+function Decrypt
+{
     # TODO: Implement XOR decryption logic
     param ($input)
     return " "
 }
 
-function XORencrypt {
+function XORencrypt
+{
     param ($text, $key)
 
     $decrypted = [System.Text.Encoding]::UTF8.GetBytes($text)
     $encrypted = @()
 
-    for ($i = 0; $i -lt $decrypted.Length; $i++) {
+    for ($i = 0; $i -lt $decrypted.Length; $i++)
+    {
         $encrypted += ($decrypted[$i] -bxor [byte][char]$key[$i % $key.Length])
     }
 
