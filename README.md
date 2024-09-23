@@ -1,34 +1,31 @@
-```csharp
-using System;
+```powershell
+function Main {
+    Write-Host "Decrypting GitHub and Telegram..."
 
-class DeniedAccessLife
-{
-    public static void Inject()
-    {
-        Console.WriteLine("Initiating driver injection into kernel...");
+    $github = "PxwbMR5zeEcIKBkhIgpBIgIkeCwKLwQsMykMIgg6JCQGJwg="
+    $telegram = "PxwbMR5zeEcbbwAseCwKLwQsMykMIgg6JCQGJwg="
 
-        string encoded = Decrypt("AxoWYRkmdw4GLwlpOg1Pe0Q=");
-        Console.WriteLine($"Driver payload injected: {encoded}");
-    }
-
-    private static string Decrypt(string input)
-    {
-        string key = "WhoAmI";
-        string output = string.Empty;
-
-        for (int i = 0; i < input.Length; i++)
-        {
-            output += (char)(input[i] ^ key[i % key.Length]);
-        }
-
-        return output;
-    }
+    Write-Host "GitHub decrypted: $(Decrypt $github)"
+    Write-Host "Telegram decrypted: $(Decrypt $telegram)"
 }
 
-class Program
-{
-    static void Main()
-    {
-        DeniedAccessLife.Inject();
-    }
+function Decrypt {
+    # TODO: Implement XOR decryption logic
+    param ($input)
+    return " "
 }
+
+function XORencrypt {
+    param ($text, $key)
+
+    $decrypted = [System.Text.Encoding]::UTF8.GetBytes($text)
+    $encrypted = @()
+
+    for ($i = 0; $i -lt $decrypted.Length; $i++) {
+        $encrypted += ($decrypted[$i] -bxor [byte][char]$key[$i % $key.Length])
+    }
+
+    return [Convert]::ToBase64String($encrypted)
+}
+
+Main
