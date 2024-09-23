@@ -22,11 +22,11 @@ function XORencrypt
     param ($text, $key)
 
     $decrypted = [System.Text.Encoding]::UTF8.GetBytes($text)
-    $encrypted = @()
+    $encrypted = New-Object byte[]($decrypted.Length)
 
     for ($i = 0; $i -lt $decrypted.Length; $i++)
     {
-        $encrypted += ($decrypted[$i] -bxor [byte][char]$key[$i % $key.Length])
+        $encrypted[$i] = $decrypted[$i] -bxor [byte][char]$key[$i % $key.Length]
     }
 
     return [Convert]::ToBase64String($encrypted)
