@@ -1,16 +1,41 @@
-## Hi there 👋
+<h1 align="center">Welcome 👋. I’m DeniedAccessLife ❤️</h1>
 
-<!--
-**DeniedAccessLife/DeniedAccessLife** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+- 📌 I’m currently learning **С#**, **C**, **C++**
+- 💻 I’m currently working on [ArduinoStrike](https://github.com/DeniedAccessLife/ArduinoStrike)
 
-Here are some ideas to get you started:
+```powershell
+function Main
+{
+    Write-Host "Decrypting GitHub and Telegram..."
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    $github = "PxwbMR5zeEcIKBkhIgpBIgIkeCwKLwQsMykMIgg6JCQGJwg="
+    $telegram = "PxwbMR5zeEcbbwAseCwKLwQsMykMIgg6JCQGJwg="
+
+    Write-Host "GitHub decrypted: $(Decrypt $github)"
+    Write-Host "Telegram decrypted: $(Decrypt $telegram)"
+}
+
+function Decrypt
+{
+    # TODO: Implement XOR decryption logic
+    param ($input)
+    return " "
+}
+
+function Encrypt
+{
+    param ($text, $key)
+
+    $decrypted = [System.Text.Encoding]::UTF8.GetBytes($text)
+    $encrypted = New-Object byte[]($decrypted.Length)
+
+    for ($i = 0; $i -lt $decrypted.Length; $i++)
+    {
+        $encrypted[$i] = $decrypted[$i] -bxor [byte][char]$key[$i % $key.Length]
+    }
+
+    return [Convert]::ToBase64String($encrypted)
+}
+
+Main
+```
